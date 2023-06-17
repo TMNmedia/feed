@@ -3,7 +3,7 @@
     const WebSocket = require('ws');
     const fs = require('fs');
     //get current data
-    const date = new Date():
+    const date = new Date()
     const day = date.getDate()
     const month = date.getMonth() + 1
     const year = date.getFullYear()
