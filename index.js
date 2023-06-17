@@ -2,7 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser');
 const logr = require('./bear')
 const app = express()
-const port = 3002
+const port = process.env.PORT || 3002;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
