@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAITH - SIGNAL ALERT SET UP</title>
+    <title>TMNMEDIA - SIGNAL ALERT SET UP</title>
     
     
     
@@ -150,6 +150,7 @@ color: #009879;
                 <th> TRADE-WON </th>
                 <th> TRADE-LOST  </th>
                 <th> WIN-RATE % </th>
+                <th> TOTAL-TRADES % </th>
             </tr>
             <tr style="font-weight: bold; text-size-adjust: auto;">
                 <td id="lastick">---</td>
@@ -160,9 +161,10 @@ color: #009879;
                 <td id="exitick">---</td>
                 <td id="entrytick">---</td>
                 <td id="entrystatus">---</td>
-                <td id="tradewonb">---</td>
-                <td id="tradelostb">---</td>
-                <td id="winratiob">---</td>
+                <td id="tradewon25">---</td>
+                <td id="tradelost25">---</td>
+                <td id="winratio25">---</td>
+                <td id="noftrades25">---</td>
             </tr>
             
       
@@ -256,9 +258,54 @@ color: #009879;
         
     }
     getTMN()
-    
+    getTMN25()
+
+        if (entrybear === "ENTER"  ) {
+            document.getElementById('entry25').style.backgroundColor = "green";
+            document.getElementById('entry25').style.color = "yellow";
+            
+        } else {
+                document.getElementById('entry25').style.backgroundColor = "ash";//"green";
+                document.getElementById('entry25').style.color = "black";
+                           
+        }
+
+        if ( entrybear25 === "ENTER" ) {
+            document.getElementById('entry').style.backgroundColor = "green";
+            document.getElementById('entry').style.color = "yellow";
+        } else {
+                document.getElementById('entry').style.backgroundColor = "ash";//"green";
+                document.getElementById('entry').style.color = "black";
+                            
+        }
+
+        if (signalbear === "BELOW BRK LVL"  ) {
+            document.getElementById('signal25').style.backgroundColor = "green";
+            document.getElementById('signal25').style.color = "yellow";
+            
+            
+        } else {
+                document.getElementById('signal25').style.backgroundColor = "ash";//"green";
+                document.getElementById('signal25').style.color = "black";
+                
+                            
+        }
+        if ( signalbear25 === "BELOW BRK LVL" ) {
+            
+            document.getElementById('signal').style.backgroundColor = "green";
+            document.getElementById('signal').style.color = "yellow";
+            
+            
+        } else {
+                document.getElementById('signal').style.backgroundColor = "ash";//"green";
+                document.getElementById('signal').style.color = "black";
+                            
+        }
   }, 1000);
   const api_url = "https://tmnmediatrading-feed.onrender.com/data"// "http://localhost:3002/data"; https://tmnmediatrading-feed.onrender.com/data
+   
+  const api_url25 = "https://tmnmediatrading-feed.onrender.com/data25";
+
   async function getTMN() {
     const response = await fetch(api_url);
     const data = await response.json();
@@ -286,6 +333,33 @@ color: #009879;
     }
 }getTMN()
 
+
+async function getTMN25() {
+    const response = await fetch(api_url25);
+    const data = await response.json();
+    const { signalbear25,entrybear25,derivtimer,beartickvalue25,entry25status25,previousbar25,currentbar25,entrytickvalue25,exitbear25,tradewon25,tradelost25,winrate25,noftrades25} = data;
+    document.getElementById('signal').innerText = signalbear25
+    document.getElementById('entry').innerText = entrybear25
+    //document.getElementById('tick-time').innerText = derivtimer
+    document.getElementById('lastick').innerText = beartickvalue25
+
+    document.getElementById('entrystatus').innerText = entry25status25
+    document.getElementById('prebar').innerText = previousbar25
+    document.getElementById('curbar').innerText = currentbar25
+    document.getElementById('entrytick').innerText = entrytickvalue25
+    document.getElementById('exitick').innerText = exitbear25
+    document.getElementById('tradewon25').innerText = tradewon25
+    document.getElementById('tradelost25').innerText = tradelost25
+    document.getElementById('winratio25').innerText = winrate25
+    document.getElementById('noftrades25').innerText = noftrades25
+    
+    if (entrybear25 === "ENTER") {
+        const notificationz = new Notification('Notification From TMN-R_25 INDEX =SIGNAL-Bot',{
+            body: `${'MASTER-BEAR=SIGNAL =>'}-${'TIME = '}${derivtimer}${'\r\n'}${'LAST-TICK = '}${beartickvalue25}${'\r\n'}`
+        });
+        return
+    }
+}getTMN()
 
         function checkserverS() {
 
