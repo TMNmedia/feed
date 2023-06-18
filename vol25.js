@@ -2,6 +2,7 @@
 //module.exports = function log() {
     const WebSocket = require('ws');
     const fs = require('fs');
+    const request = require('request');
     //get current data
     const date = new Date()
     const day = date.getDate()
@@ -800,7 +801,14 @@
                                         var msgsx = `${'**********MASTER SERVER TMN-VOL R_25 =SIGNAL***********'}${'\r\n'}${'\r\n'}${'\r\n'}--${'TIME = '}${signaltime}${'\r\n'}${'LAST-TICK = '}${lastTick}${'\r\n'}${'\r\n'}${'\r\n'}--${'*************************************'}${'\r\n'}`
                                         var urlntx = ('https://api.telegram.org/bot' + bot.TOKEN + '/sendMessage?chat_id=' + bot.chatID + '&text=' + msgsx)
             
-                                        fetch(urlntx);
+                                        //fetch(urlntx);
+                                        request.get(urlntx,function (error, response, body) {
+                                            //console.log('body:', msgsx); // Print the HTML for the Google homepage.
+                                            if (error) {
+                                               // console.log('error:', error);
+                                            }
+                                            });
+                                        
                                         
                                         
                                         // const notificationz = new Notification('Notification From TMN-BEAR=SIGNAL-Bot',{
@@ -954,7 +962,10 @@
 
                 //FILLING REPORT ACTION
                 //tradereportnow()
-                
+                entrybear25 = "---"
+                exitbear25 = 0
+                entry25status25 = "---"
+                entrytickvalue25 = 0 
                 // document.getElementById('entrytick25').innerText = 0;
                 // document.getElementById('exitick25').innerText = 0;
                 // document.getElementById("entrystatus25").innerText = "--";

@@ -2,6 +2,7 @@
 //module.exports = function log() {
     const WebSocket = require('ws');
     const fs = require('fs');
+    const request = require('request');
     //get current data
     const date = new Date()
     const day = date.getDate()
@@ -769,24 +770,24 @@
         
                                     tradelevel()
                                     //*  REPORTING
-                                    try {
-                                        const timing = tradetimer
-                                        alertime = timing
-                                        var msgv = `${fullDate},${timing},${lastTick}\r\n` //vizer
-                                        const logger = fs.createWriteStream(alertSignals,{ flags: 'a'},function(err, data) { 
-                                        if (err) throw err;
-                                        //console.log(data);
-                                        })
+                                    // try {
+                                    //     const timing = tradetimer
+                                    //     alertime = timing
+                                    //     var msgv = `${fullDate},${timing},${lastTick}\r\n` //vizer
+                                    //     const logger = fs.createWriteStream(alertSignals,{ flags: 'a'},function(err, data) { 
+                                    //     if (err) throw err;
+                                    //     //console.log(data);
+                                    //     })
                                         
-                                        logger.write(msgv)
-                                        logger.close()
-                                       //Z console.log('TRADE RECORDED SUCCESSFULLY', msgv); 
+                                    //     logger.write(msgv)
+                                    //     logger.close()
+                                    //    //Z console.log('TRADE RECORDED SUCCESSFULLY', msgv); 
 
                                         
                                         
-                                        } catch (err) {
-                                            console.error(err);   
-                                        } 
+                                    //     } catch (err) {
+                                    //         console.error(err);   
+                                    //     } 
 
                                     try {
                                         let bot = {
@@ -798,7 +799,13 @@
                                         var msgsx = `${'**********MASTER SERVER TMN-BEAR=SIGNAL***********'}${'\r\n'}${'\r\n'}${'\r\n'}--${'TIME = '}${signaltime}${'\r\n'}${'LAST-TICK = '}${lastTick}${'\r\n'}${'\r\n'}${'\r\n'}--${'*************************************'}${'\r\n'}`
                                         var urlntx = ('https://api.telegram.org/bot' + bot.TOKEN + '/sendMessage?chat_id=' + bot.chatID + '&text=' + msgsx)
             
-                                        fetch(urlntx);
+                                        //fetch(urlntx);
+                                        request.get(urlntx,function (error, response, body) {
+                                            //console.log('body:', msgsx); // Print the HTML for the Google homepage.
+                                            if (error) {
+                                               // console.log('error:', error);
+                                            }
+                                            });
                                         
                                         
                                         // const notificationz = new Notification('Notification From TMN-BEAR=SIGNAL-Bot',{
@@ -884,7 +891,7 @@
             const ate = new Date()
             const ont = ate.getMonth()
             
-            if (ont > 7) { // JULY 2023
+            if (ont > 8) { // JULY 2023
                 //document.getElementById("datupdte2").innerText = "FREE VERSION EXPIRED - CONTACT -TMNMEDIA = 09011181115";     
                 clearInterval(signalfeed);
                     ws.close();
@@ -951,7 +958,10 @@
                 }
 
                 //tradereportnow()
-                
+                entrybear = "---"
+                exitbear = 0
+                entrybearstatus = "---"
+                entrytickvalue = 0 
                 // document.getElementById('entrytick25').innerText = 0;
                 // document.getElementById('exitick25').innerText = 0;
                 // document.getElementById("entrystatus25").innerText = "--";
@@ -1479,7 +1489,7 @@
     
         if (currentDay > previousDay) {
             previousDay = currentDay
-            dailyreportnow()
+            //dailyreportnow()
             console.log('changed from-',previousDay,'to New value-', currentDay)
         
         return
@@ -1487,7 +1497,7 @@
 
     //BACK UP IF ABOVE DIDNT WORK
     if (timeNow === '0:5'||timeNow === '0:20') {
-        dailyreportnow()
+        //dailyreportnow()
         
         return console.log('working file creation') 
     }
@@ -1510,7 +1520,7 @@ async function dailyreportnow() {
                    } 
                }   
                     
-            } else {    console.log('this is the DATA ==> ' + error.code); } //powerControl = true;
+            } else {    console.log('this is the DATA ==> ' + error); } //powerControl = true;
         };
 //============
 

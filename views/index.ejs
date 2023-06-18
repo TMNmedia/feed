@@ -260,47 +260,7 @@ color: #009879;
     getTMN()
     getTMN25()
 
-        if (entrybear === "ENTER"  ) {
-            document.getElementById('entry25').style.backgroundColor = "green";
-            document.getElementById('entry25').style.color = "yellow";
-            
-        } else {
-                document.getElementById('entry25').style.backgroundColor = "ash";//"green";
-                document.getElementById('entry25').style.color = "black";
-                           
-        }
-
-        if ( entrybear25 === "ENTER" ) {
-            document.getElementById('entry').style.backgroundColor = "green";
-            document.getElementById('entry').style.color = "yellow";
-        } else {
-                document.getElementById('entry').style.backgroundColor = "ash";//"green";
-                document.getElementById('entry').style.color = "black";
-                            
-        }
-
-        if (signalbear === "BELOW BRK LVL"  ) {
-            document.getElementById('signal25').style.backgroundColor = "green";
-            document.getElementById('signal25').style.color = "yellow";
-            
-            
-        } else {
-                document.getElementById('signal25').style.backgroundColor = "ash";//"green";
-                document.getElementById('signal25').style.color = "black";
-                
-                            
-        }
-        if ( signalbear25 === "BELOW BRK LVL" ) {
-            
-            document.getElementById('signal').style.backgroundColor = "green";
-            document.getElementById('signal').style.color = "yellow";
-            
-            
-        } else {
-                document.getElementById('signal').style.backgroundColor = "ash";//"green";
-                document.getElementById('signal').style.color = "black";
-                            
-        }
+        
   }, 1000);
   const api_url = "https://tmnmediatrading-feed.onrender.com/data"// "http://localhost:3002/data"; https://tmnmediatrading-feed.onrender.com/data
    
@@ -331,6 +291,32 @@ color: #009879;
         });
         return
     }
+
+    if (entrybear === "ENTER"  ) {
+            document.getElementById('entry25').style.backgroundColor = "green";
+            document.getElementById('entry25').style.color = "yellow";
+            
+        } else {
+                document.getElementById('entry25').style.backgroundColor = "ash";//"green";
+                document.getElementById('entry25').style.color = "black";
+                           
+        }
+
+        
+
+        if (signalbear === "BELOW BRK LVL"  ) {
+            document.getElementById('signal25').style.backgroundColor = "green";
+            document.getElementById('signal25').style.color = "yellow";
+            
+            
+        } else {
+                document.getElementById('signal25').style.backgroundColor = "ash";//"green";
+                document.getElementById('signal25').style.color = "black";
+                
+                            
+        }
+        
+        
 }getTMN()
 
 
@@ -359,6 +345,28 @@ async function getTMN25() {
         });
         return
     }
+
+    if ( signalbear25 === "BELOW BRK LVL" ) {
+            
+            document.getElementById('signal').style.backgroundColor = "green";
+            document.getElementById('signal').style.color = "yellow";
+            
+            
+        } else {
+                document.getElementById('signal').style.backgroundColor = "ash";//"green";
+                document.getElementById('signal').style.color = "black";
+                            
+        }
+        
+        if ( entrybear25 === "ENTER" ) {
+            document.getElementById('entry').style.backgroundColor = "green";
+            document.getElementById('entry').style.color = "yellow";
+        } else {
+                document.getElementById('entry').style.backgroundColor = "ash";//"green";
+                document.getElementById('entry').style.color = "black";
+                            
+        }
+    
 }getTMN()
 
         function checkserverS() {
