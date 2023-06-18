@@ -918,19 +918,19 @@
             // document.getElementById('entry25').style.color = "black";
             const entrytick = lastTick * 1;
             entrytickvalue25 = entrytick
-            exitbear25 =  ((parseFloat((entrytick - 0.55)).toFixed(4)) * 1)
+            exitbear25 =  ((parseFloat((entrytick - 0.15)).toFixed(4)) * 1)
             // document.getElementById('entrytick25').innerText = entrytick;
             // document.getElementById('exitick25').innerText = entrytick - 0.55;
             //console.log('CONTINUE SIGNAL IS NOW overRide =>', continuec);
             checkfeed = setInterval(checkingtrade, 1000);
             function checkingtrade() {
-                if (lastTick <= entrytick - 0.5) {
+                if (lastTick <= entrytick - 0.15) {
                     entry25status25 = "WON"
                     //document.getElementById("entrystatus25").innerText = "WON";
                     nofwons = nofwons + 1;
                     clearInterval(checkfeed);
                     return
-                } else if (lastTick >= entrytick + 2.5) {
+                } else if (lastTick >= entrytick + 0.8) {
                     //document.getElementById("entrystatus25").innerText = "LOST";
                     entry25status25 = "LOST" 
                     noflosts = noflosts + 1
