@@ -1,8 +1,9 @@
 const express = require('express')
 const bodyParser = require('body-parser');
 const logr = require('./bear')
+const logr25 = require('./vol25')
 const app = express()
-const port = 3002
+const port = process.env.PORT || 3002;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -15,6 +16,11 @@ app.use(express.static('public'));
 app.get('/data', (req, res) => {
   res.send(JSON.stringify(logr()));
 });
+
+app.get('/data25', (req, res) => {
+  res.send(JSON.stringify(logr25()));
+});
+
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {

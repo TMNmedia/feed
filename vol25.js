@@ -44,7 +44,7 @@
 
 
             
-    var signalbear,entrybear,derivtimer,beartickvalue ,previousbar,currentbar,tradewon,tradelost,winrate,noftrades
+    var signalbear25,entrybear25,derivtimer,beartickvalue25 ,previousbar25,currentbar25,tradewon25,tradelost25,winrate25
     var continuec = true; 
     //var lower_time = 60;
     var current_open;
@@ -54,20 +54,20 @@
     var brkHigh,supportlevell,resistancelevel;
     var brkLow ;
     var brkMa ;
-    var bar_size = 2;
+    var bar_size = 0.8;
     var bar_space = 0.05;
     var entry_size = 0.3;
     var ttlptlss = 0;
     var nofwons = 0;
     var noflosts = 0;
-    var noftrades = 0;
+    var noftrades25 = 0;
     var win_rate;
     var activate, wickr;
     var previous_open3,previous_low,currentM9,previous_low3,previous_close3;
     var alertime, serverSecs, serverTimez,seconds;
-    var exitbear = 0;
-    var entrybearstatus = "";
-    var entrytickvalue = 0
+    var exitbear25 = 0;
+    var entry25status25 = "";
+    var entrytickvalue25 = 0
 
 
     function checkserver() {
@@ -97,7 +97,7 @@
         wsma.onopen = function(evt) {
             try { 
                 wsma.send(JSON.stringify(
-                {ticks_history: "RDBEAR",//"R_10",//selected_index,//
+                {ticks_history: "R_25",//"R_10",//selected_index,//
                     subscribe: 1,
                     adjust_start_time: 1,
                     count: 9,
@@ -114,7 +114,7 @@
                     //console.log('WEBSOCKET TIMER==>', serverTimez)
                     if (seconds == 0 || seconds == 1) {
                         wsma.send(JSON.stringify(
-                            {ticks_history: "RDBEAR",//"R_10",//selected_index,//selected_index,
+                            {ticks_history: "R_25",//"R_10",//selected_index,//selected_index,
                                 //subscribe: 1,
                                 adjust_start_time: 1,
                                 count: 9,
@@ -243,7 +243,7 @@
         wsma.onopen = function(evt) {
             try { 
                 wsma.send(JSON.stringify(
-                {ticks_history: "RDBEAR",//"R_10",//selected_index,//
+                {ticks_history: "R_25",//"R_10",//selected_index,//
                     subscribe: 1,
                     adjust_start_time: 1,
                     count: 14,
@@ -258,7 +258,7 @@
                     
                     if (seconds == 0 || seconds == 1) {
                         wsma.send(JSON.stringify(
-                            {ticks_history: "RDBEAR",//"R_10",//selected_index,//selected_index,
+                            {ticks_history: "R_25",//"R_10",//selected_index,//selected_index,
                                 //subscribe: 1,
                                 adjust_start_time: 1,
                                 count: 14,
@@ -413,7 +413,7 @@
         wssl.onopen = function(evt) {
             try { 
                 wssl.send(JSON.stringify(
-                {ticks_history: "RDBEAR",//"R_10",//selected_index,//
+                {ticks_history: "R_25",//"R_10",//selected_index,//
                     subscribe: 1,
                     adjust_start_time: 1,
                     count: 4,
@@ -428,7 +428,7 @@
                     //document.getElementById('tick-time').innerText = tradetimer
                     if (seconds == 0 || seconds == 1) {
                         wssl.send(JSON.stringify(
-                            {ticks_history: "RDBEAR",//"R_10",//selected_index,//selected_index,
+                            {ticks_history: "R_25",//"R_10",//selected_index,//selected_index,
                                 //subscribe: 1,
                                 adjust_start_time: 1,
                                 count: 4,
@@ -532,7 +532,7 @@
         wsll.onopen = function(evt) {
             try { 
                 wsll.send(JSON.stringify(
-                {ticks_history: "RDBEAR",//"R_10",//"RDBEAR",//selected_index,//
+                {ticks_history: "R_25",//"R_10",//"R_25",//selected_index,//
                     subscribe: 1,
                     adjust_start_time: 1,
                     count: 1,
@@ -560,7 +560,7 @@
                     
                     current_open = open; //current tick open
                     lastTick = close; //current tick
-                    //beartickvalue = close
+                    //beartickvalue25 = close
                 //console.log('Previous-Bar-OPEN =>',previous_open, '\n', 'Last-tick=>',previous_close, '\n');
                 //console.log('======================================================================');
         
@@ -622,12 +622,13 @@
     async function connectsignal() {
     try {
         //setInterval(async() => {
-            //dailyJsonfiling()
+           // dailyJsonfiling()
+
             let target = 100//(document.getElementById("target").innerText)*1;
             //let profitvalue = (document.getElementById("profitvalue").innerText)*1;
             let targetloss = (target * -3)
             var wick = parseFloat(current_open - lastTick).toFixed(3);
-            currentbar = wick
+            currentbar25 = wick
             //document.getElementById('curbar25').innerText = wick
 
             // restarting SIgnal feed daily for fresh start
@@ -709,7 +710,7 @@
                         var dwickr = parseFloat((previous_close - previous_open)*1).toFixed(3);
                         //Z console.log(tradetimer, dwickr,' <==BAR 2= /BARSIZE- STATUS/ BAR 1 ==> ',wickr)
                         //document.getElementById('prebar25').innerText = wickr
-                        previousbar = wickr
+                        previousbar25 = wickr
 
                         // if (wickr >= 2) {
                         //     document.getElementById('prebar25').style.backgroundColor = "green";
@@ -746,47 +747,48 @@
                     
 
                     if ( lastTick < brkLow &&  brkLow < brkMa) {
-                        signalbear = "BELOW BRK LVL"
+                        signalbear25 = "BELOW BRK LVL"
                         // document.getElementById('signal25').innerText = "BELOW BRK LVL"
                         // document.getElementById('signal25').style.backgroundColor = "green";
                         // document.getElementById('signal25').style.color = "yellow";
 
-                        if(current_open < supportlevell && previous_close < supportlevell && previous_open > supportlevell  && previous_open3 - previous_close <= 7){
+                        if(current_open < supportlevell && previous_close < supportlevell && previous_open > supportlevell  && previous_open3 - previous_close <= 3.5){
                            //Z console.log('SUPPORT LEVEL - LOW SIGNAL ACTIVATED', tradetimer)
                             if(previous_close < currentM9 && lastTick < currentM9 && current_open < supportlevell && previous_close <= previous_open - bar_size){//
                                 // document.getElementById('entry25').innerText = "GET-READY"
-                                entrybear ="GET-READY"
+                                entrybear25 ="GET-READY"
                                 // document.getElementById('entry25').style.backgroundColor = "yellow";
                                 // document.getElementById('entry25').style.color = "red";
-                                if (current_open - previous_low < 1 && lastTick <= previous_low - 0.02 && lastTick < current_open - 0.2 && previous_close <= previous_open - bar_size && seconds > 2 && seconds < 30 ) {
+                                if (current_open - previous_low < 0.4 && lastTick <= previous_low - 0.02 && lastTick < current_open - 0.1 && previous_close <= previous_open - bar_size && seconds > 2 && seconds < 30 ) {
                                     console.log('GENERAL -LOW-LOW SIGNAL ACTIVATED', tradetimer)
                                     // document.getElementById('entry25').innerText = "ENTER"
-                                    entrybear = "ENTER"
+                                    entrybear25 = "ENTER"
                                     // document.getElementById('entry25').style.backgroundColor = "green";
                                     // document.getElementById('entry25').style.color = "yellow";
                                     continuec = false;  
                                     //bearMinus()
         
                                     tradelevel()
+
                                     //*  REPORTING
-                                    try {
-                                        const timing = tradetimer
-                                        alertime = timing
-                                        var msgv = `${fullDate},${timing},${lastTick}\r\n` //vizer
-                                        const logger = fs.createWriteStream(alertSignals,{ flags: 'a'},function(err, data) { 
-                                        if (err) throw err;
-                                        //console.log(data);
-                                        })
+                                    // try {
+                                    //     const timing = tradetimer
+                                    //     alertime = timing
+                                    //     var msgv = `${fullDate},${timing},${lastTick}\r\n` //vizer
+                                    //     const logger = fs.createWriteStream(alertSignals,{ flags: 'a'},function(err, data) { 
+                                    //     if (err) throw err;
+                                    //     //console.log(data);
+                                    //     })
                                         
-                                        logger.write(msgv)
-                                        logger.close()
-                                       //Z console.log('TRADE RECORDED SUCCESSFULLY', msgv); 
+                                    //     logger.write(msgv)
+                                    //     logger.close()
+                                    //    //Z console.log('TRADE RECORDED SUCCESSFULLY', msgv); 
 
                                         
                                         
-                                        } catch (err) {
-                                            console.error(err);   
-                                        } 
+                                    //     } catch (err) {
+                                    //         console.error(err);   
+                                    //     } 
 
                                     try {
                                         let bot = {
@@ -795,7 +797,7 @@
                                     
                                         } 
                                         const signaltime = tradetimer
-                                        var msgsx = `${'**********MASTER SERVER TMN-BEAR=SIGNAL***********'}${'\r\n'}${'\r\n'}${'\r\n'}--${'TIME = '}${signaltime}${'\r\n'}${'LAST-TICK = '}${lastTick}${'\r\n'}${'\r\n'}${'\r\n'}--${'*************************************'}${'\r\n'}`
+                                        var msgsx = `${'**********MASTER SERVER TMN-VOL R_25 =SIGNAL***********'}${'\r\n'}${'\r\n'}${'\r\n'}--${'TIME = '}${signaltime}${'\r\n'}${'LAST-TICK = '}${lastTick}${'\r\n'}${'\r\n'}${'\r\n'}--${'*************************************'}${'\r\n'}`
                                         var urlntx = ('https://api.telegram.org/bot' + bot.TOKEN + '/sendMessage?chat_id=' + bot.chatID + '&text=' + msgsx)
             
                                         fetch(urlntx);
@@ -814,21 +816,21 @@
                             } else {
                                //Z console.log(lastTick,'<==XXX WAITING FOR ENTRY FORMATION XXX==>',wickr, tradetimer);
                                 // document.getElementById('entry25').innerText = "==WAITING=="
-                                entrybear = "==HOLD-ON=="
+                                entrybear25 = "==HOLD-ON=="
                                 // document.getElementById('entry25').style.backgroundColor = "ash";
                                 // document.getElementById('entry25').style.color = "black";
                             }
                         } else {
                             //Z console.log(lastTick,'<==XXX WAITING FOR ENTRY FORMATION XXX==>',wickr, tradetimer);
                             // document.getElementById('entry25').innerText = "==HOLD-ON=="
-                            entrybear = "==WAITING=="
+                            entrybear25 = "==WAITING=="
                             // document.getElementById('entry25').style.backgroundColor = "ash";
                             // document.getElementById('entry25').style.color = "black";
                         }
 
                     }else {
-                        signalbear = "==NIL=="
-                        entrybear = "==NIL=="
+                        signalbear25 = "==NIL=="
+                        entrybear25 = "==NIL=="
                         // document.getElementById('signal25').innerText = "==NIL=="
                         // document.getElementById('signal25').style.backgroundColor = "ash";//"green";
                         // document.getElementById('signal25').style.color = "black";
@@ -865,21 +867,21 @@
             }
 
             //document.getElementById("lastick25").innerText = lastTick;
-            beartickvalue = lastTick
+            beartickvalue25 = lastTick
             //===================
             
-                tradewon =nofwons
-                tradelost = noflosts
+                tradewon25 =nofwons
+                tradelost25 = noflosts
 
               //document.getElementById("profitvalue").innerText = ttlptlss;
-            // document.getElementById("tradewon").innerText = nofwons;
-            // document.getElementById("tradelost").innerText = noflosts;
+            // document.getElementById("tradewon25").innerText = nofwons;
+            // document.getElementById("tradelost25").innerText = noflosts;
                //document.getElementById("target").innerText = target;
 
             var winnn_rate = ((nofwons / (nofwons + noflosts)) * 100)
             win_rate = ((parseFloat(winnn_rate).toFixed(2)) * 1)
             //document.getElementById("winratio").innerText = win_rate;
-            winrate = win_rate
+            winrate25 = win_rate
             //===================
             const ate = new Date()
             const ont = ate.getMonth()
@@ -906,31 +908,31 @@
 
     function tradelevel() {
         continuec = false;
-        noftrades = noftrades + 1
+        noftrades25 = noftrades25 + 1
         //Z console.log('CONTINUE SIGNAL IS NOW =>', continuec);
         
         setTimeout(() => {
-            entrybear = "ONGOING"
+            entrybear25 = "ONGOING"
             // document.getElementById('entry25').innerText = "ONGOING"
             // document.getElementById('entry25').style.backgroundColor = "yellow";
             // document.getElementById('entry25').style.color = "black";
             const entrytick = lastTick * 1;
-            entrytickvalue = entrytick
-            exitbear =  ((parseFloat((entrytick - 0.55)).toFixed(4)) * 1)
+            entrytickvalue25 = entrytick
+            exitbear25 =  ((parseFloat((entrytick - 0.55)).toFixed(4)) * 1)
             // document.getElementById('entrytick25').innerText = entrytick;
             // document.getElementById('exitick25').innerText = entrytick - 0.55;
             //console.log('CONTINUE SIGNAL IS NOW overRide =>', continuec);
             checkfeed = setInterval(checkingtrade, 1000);
             function checkingtrade() {
                 if (lastTick <= entrytick - 0.5) {
-                    entrybearstatus = "WON"
+                    entry25status25 = "WON"
                     //document.getElementById("entrystatus25").innerText = "WON";
                     nofwons = nofwons + 1;
                     clearInterval(checkfeed);
                     return
                 } else if (lastTick >= entrytick + 2.5) {
                     //document.getElementById("entrystatus25").innerText = "LOST";
-                    entrybearstatus = "LOST" 
+                    entry25status25 = "LOST" 
                     noflosts = noflosts + 1
                     clearInterval(checkfeed);
                     return
@@ -943,13 +945,14 @@
             setTimeout(() => {
                 continuec = true;
                 clearInterval(checkfeed);
-                if(entrybearstatus != "WON" && entrybearstatus != "LOST" ){
-                    entrybearstatus = "LOST" 
+                if(entry25status25 != "WON" && entry25status25 != "LOST" ){
+                    entry25status25 = "LOST" 
                     noflosts = noflosts + 1
                     return
 
                 }
 
+                //FILLING REPORT ACTION
                 //tradereportnow()
                 
                 // document.getElementById('entrytick25').innerText = 0;
@@ -968,7 +971,7 @@
     function bearMinus() {
         const tokeninput = "g4cwZf1qAwx8Cy6"//`${tokenn}`;
         //const index = indxxx//document.getElementById("Index").value;
-        const selected_index = "RDBEAR"//"R_10"//`${index}`;
+        const selected_index = "R_25"//"R_10"//`${index}`;
     // const WebSocket = require('ws');
         var ws = new WebSocket('wss://ws.binaryws.com/websockets/v3?app_id=32150');
         const amount = 20//inputamount;
@@ -1139,7 +1142,7 @@
     function higherWithMinus() {
     const tokeninput = "g4cwZf1qAwx8Cy6"//`${tokenn}`;
     //const index = indxxx//document.getElementById("Index").value;
-    const selected_index = "RDBEAR"//"R_10"//`${index}`;
+    const selected_index = "R_25"//"R_10"//`${index}`;
     // const WebSocket = require('ws');
     var ws = new WebSocket('wss://ws.binaryws.com/websockets/v3?app_id=32150');
     const amount = 20//inputamount;
@@ -1415,9 +1418,9 @@
                var sample2 = {
                    Date:  fullDate,
                    AlertTime: alertime,
-                   EntryValue: entrytickvalue,
-                   TargetValue: exitbear,
-                   TradeResult: entrybearstatus
+                   EntryValue: entrytickvalue25,
+                   TargetValue: exitbear25,
+                   TradeResult: entry25status25
                }
                
                var samplify = words.concat(sample2)
@@ -1450,10 +1453,10 @@
             return;
             } 
         }
-        entrybear = "---"
-        exitbear = 0
-        entrybearstatus = "---"
-        entrytickvalue = 0 
+        entrybear25 = "---"
+        exitbear25 = 0
+        entry25status25 = "---"
+        entrytickvalue25 = 0 
         return console.log('this is the DATA ==> ' + parseJson2);
        
    }
@@ -1478,7 +1481,6 @@
     currentDay =  day;
     
         if (currentDay > previousDay) {
-            previousDay = currentDay
             dailyreportnow()
             console.log('changed from-',previousDay,'to New value-', currentDay)
         
@@ -1520,17 +1522,17 @@ async function dailyreportnow() {
            
             var sample = {
                 Date:  "16-6-2023",
-                NofTrades: 12,
+                NofTrades25: 12,
                 TradesWon: 9,
-                TradeLost: 3,
+                TradeLost25: 3,
                 WinRatio: 85
             }
            var sample2 = {
                Date:  fullDate,
-               NofTrades: noftrades,
-               TradesWon: tradewon,
-               TradeLost: tradelost,
-               WinRatio: winrate
+               NofTrades25: noftrades25,
+               TradesWon: tradewon25,
+               TradeLost25: tradelost25,
+               WinRatio: winrate25
            }
            
            var samplify = words.concat(sample2)
@@ -1557,20 +1559,20 @@ function dailyaddjson(ggd) {
         return;
         } 
     }
-    // tradewon = 0
-    // tradelost = 0
-    // winrate= 0
-    // noftrades = 0
+    // tradewon25 = 0
+    // tradelost25 = 0
+    // winrate25= 0
+    // noftrades25 = 0
     
     return console.log('this is the DATA ==> ' + parseJson2);
    
 }
         
-function logr() {
-    return {signalbear,entrybear,derivtimer,beartickvalue,entrybearstatus,previousbar,currentbar,entrytickvalue,exitbear,tradewon,tradelost,winrate,noftrades}
+function logr25() {
+    return {signalbear25,entrybear25,derivtimer,beartickvalue25,entry25status25,previousbar25,currentbar25,entrytickvalue25,exitbear25,tradewon25,tradelost25,winrate25,noftrades25}
 }
     
  //  }  //
- module.exports = logr
+ module.exports = logr25
 
 
