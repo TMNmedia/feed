@@ -1,4 +1,12 @@
 package-lock.json
 # Dependency directories
 node_modules/*
-
+masterbear.js
+mastervol25.js
+param.txt
+# Compiled file locations
+table.html
+xmmx.html
+test.js
+checkingfile.js
+.env

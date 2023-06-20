@@ -1,106 +1,180 @@
-<%- include('layout/header') %>
-    <div class="container">
-        <h1>TMNMEDIA SIGNAL ALERT</h1>
-       
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TMNMEDIA - SIGNAL ALERT SET UP</title>
     
-        <div class="container">
-            <div style="text-align: center; ">
+    
+    
+    <style>
+        * {
+/* Change your font family */
+font-family: sans-serif;
+}
+
+
+.content-table {
+border-collapse: collapse;
+margin: 25px 0;
+align-content: center;
+
+border-radius: 5px 5px 0 0;
+overflow: hidden;
+box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.content-table thead tr {
+background-color: #009879;
+color: #ffffff;
+text-align: center;
+font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+padding: 8px 8px;
+
+}
+
+.content-table tbody tr {
+border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+background-color: #f3f3f3;
+}
+
+.content-table tbody tr:last-of-type {
+border-bottom: 2px solid #009879;
+}
+
+.content-table tbody tr.active-row {
+font-weight: bold;
+color: #009879;
+}
+</style>
+</head>
+<body style="text-align: center; width:100%;align-content: center;">
+    <h1>TMNMEDIA SIGNAL ALERT</h1>
+    <div style="text-align: center; width:100%;">
+
+    
+        <h3 style="text-align: center;" id='datupdte'>====================</h3><h1 id='tick-time'>---</h1><h3>====================</h3>
+        <h3 id='datupdte2'>--</h3>
+        <h3 name="ticker"></h3></h3>
 
         
-                <h3 style="text-align: center;" id='datupdte'>====================</h3><h1 id='tick-time'>---</h1><h3>====================</h3>
-                <h4 id='datupdte2'>--</h4>
-                <h4 name="ticker"></h4></h3>
-        
+
+    </div>    
+        <div id="bear" style=" text-align: center; align-content: center; padding: 15px;">
+            <table border= '2' class="content-table" style="
+            display: inline-block;
+            text-decoration: none;
+            text-size-adjust: auto;
+            font-size: medium;
+            background-color: rgb(255, 253, 253);
+            color: rgb(6, 6, 6);
+            margin: 5px auto;
+            padding: 1px;
+            box-sizing: content-box;
+            text-align: center;align-content: center;">
+            
+            <tr>
+              <h2 style="text-align: center;">BEAR-SIGNAL SET UP BELOW</h2>
+          
+                <th> LAST-TICK VALUE </th>
+                <th> PREVIOUS BAR SIZE </th>
+                <th> CURRENT BAR SIZE </th>
+                <th> SIGNAL SET-UP  </th>
+                <th> ENTRY SET-UP.   </th>
+                <th> EXIT-TICK-VALUE </th>
+                <th> ENTRY-TICK-VALUE </th>
+                <th> ENTRY-STATUS </th>
+                <th> TRADE-WON </th>
+                <th> TRADE-LOST  </th>
+                <th> WIN-RATE % </th>
+                <th> TOTAL-TRADES % </th>
+            </tr>
+            <tr style="font-weight: bold; text-size-adjust: auto;">
+                <td id="lastick25" name="ticker">---</td>
+                <td id="prebar25">---</td>
+                <td id="curbar25">---</td>
+                <td id="signal25">---</td>
+                <td id="entry25">---</td>
+                <td id="exitick25">---</td>
+                <td id="entrytick25">---</td>
+                <td id="entrystatus25">---</td>
+                <td id="tradewon">---</td>
+                <td id="tradelost">---</td>
+                <td id="winratio">---</td>
+                <td id="noftrades">---</td>
                 
+            </tr>
+            
+      
+        </table>
+        </div>
         
-            </div>
-            <br>
-            <div class="table-responsive">
-            <table class="table table-bordered">
-                <thead class="thead-dark">
-                <tr >
-                    <h2 style="text-align: center;">BEAR-SIGNAL SET UP BELOW</h2>
-                    <th> LAST-TICK VALUE </th>
-                    <th> PREVIOUS BAR SIZE </th>
-                    <th> CURRENT BAR SIZE </th>
-                    <th> SIGNAL SET-UP  </th>
-                    <th> ENTRY SET-UP.   </th>
-                    <th> EXIT-TICK-VALUE </th>
-                    <th> ENTRY-TICK-VALUE </th>
-                    <th> ENTRY-STATUS </th>
-                    <th> TRADE-WON </th>
-                    <th> TRADE-LOST  </th>
-                    <th> WIN-RATE % </th>
-                    <th> TOTAL-TRADES % </th>
-                    
-                </tr>
-                </thead>
-                <tbody>
-                <tr style="font-weight: bold; text-size-adjust: auto;">
-                    <td id="lastick25" name="ticker">---</td>
-                    <td id="prebar25">---</td>
-                    <td id="curbar25">---</td>
-                    <td id="signal25">---</td>
-                    <td id="entry25">---</td>
-                    <td id="exitick25">---</td>
-                    <td id="entrytick25">---</td>
-                    <td id="entrystatus25">---</td>
-                    <td id="tradewon">---</td>
-                    <td id="tradelost">---</td>
-                    <td id="winratio">---</td>
-                    <td id="noftrades">---</td>
-                    
-                </tr>
+    
+    
         
-                </tbody>
+        <div id="v25" style="width:100%; text-align: center; align-content: center; padding: 10px;">
+            <table border= '2' class="content-table" style="
+            display: inline-block;
+            text-decoration: none;
+            text-size-adjust: auto;
+            
+            background-color: rgb(255, 253, 253);
+            color: rgb(6, 6, 6);
+            margin: 5px auto;
+            padding: 1px;
+            box-sizing: content-box;
+            text-size-adjust: auto;
+            
+            "
+            >
+            
+            <tr>
+              <h2 style="text-align: center;">25 INDEX SIGNAL SET UP BELOW</h2>
+          
+                <th> LAST-TICK VALUE </th>
+                <th> PREVIOUS BAR SIZE </th>
+                <th> CURRENT BAR SIZE </th>
+                <th> SIGNAL SET-UP  </th>
+                <th> ENTRY SET-UP.   </th>
+                <th> EXIT-TICK-VALUE </th>
+                <th> ENTRY-TICK-VALUE </th>
+                <th> ENTRY-STATUS </th>
+                <th> TRADE-WON </th>
+                <th> TRADE-LOST  </th>
+                <th> WIN-RATE % </th>
+                <th> TOTAL-TRADES % </th>
+            </tr>
+            <tr style="font-weight: bold; text-size-adjust: auto;">
+                <td id="lastick">---</td>
+                <td id="prebar">---</td>
+                <td id="curbar">---</td>
+                <td id="signal">---</td>
+                <td id="entry">---</td>
+                <td id="exitick">---</td>
+                <td id="entrytick">---</td>
+                <td id="entrystatus">---</td>
+                <td id="tradewon25">---</td>
+                <td id="tradelost25">---</td>
+                <td id="winratio25">---</td>
+                <td id="noftrades25">---</td>
+            </tr>
+            
+      
             </table>
-            </div>
-            <br><br>
-            <div class="table-responsive">
-            <table class="table table-bordered">
-                <thead class="thead-dark">
-                <tr>
-                    <h2 style="text-align: center;">25 INDEX SIGNAL SET UP BELOW</h2>
-                    <th> LAST-TICK VALUE </th>
-                    <th> PREVIOUS BAR SIZE </th>
-                    <th> CURRENT BAR SIZE </th>
-                    <th> SIGNAL SET-UP  </th>
-                    <th> ENTRY SET-UP.   </th>
-                    <th> EXIT-TICK-VALUE </th>
-                    <th> ENTRY-TICK-VALUE </th>
-                    <th> ENTRY-STATUS </th>
-                    <th> TRADE-WON </th>
-                    <th> TRADE-LOST  </th>
-                    <th> WIN-RATE % </th>
-                    <th> TOTAL-TRADES % </th>
-                    
-                </tr>
-                </thead>
-                <tbody>
-                <tr style="font-weight: bold; text-size-adjust: auto;">
-                    <td id="lastick">---</td>
-                    <td id="prebar">---</td>
-                    <td id="curbar">---</td>
-                    <td id="signal">---</td>
-                    <td id="entry">---</td>
-                    <td id="exitick">---</td>
-                    <td id="entrytick">---</td>
-                    <td id="entrystatus">---</td>
-                    <td id="tradewon25">---</td>
-                    <td id="tradelost25">---</td>
-                    <td id="winratio25">---</td>
-                    <td id="noftrades25">---</td>
-                    
-                </tr>
-        
-                </tbody>
-            </table>
-            </div>
             <br><br>
         </div>
-            
-        <div style="text-align: center; align-content: center;">
-            <a style=" text-align: center; font-weight: bold; font-size:1.5vw;" href="https://track.deriv.com/_m3ZAAY7V9rNB4VdSfJsOp2Nd7ZgqdRLk/1/"> <h5>CLICK HERE TO CREATE A DERIV DEMO ACCOUNT</h5> </a>
+        <br>
+        
+        <div style="text-align: center; width:100%;align-content: center;">
+            <a style="width:100%; text-align: center; font-weight: bold; font-size:1.5vw;" href="https://track.deriv.com/_m3ZAAY7V9rNB4VdSfJsOp2Nd7ZgqdRLk/1/">CLICK HERE TO CREATE A DERIV DEMO ACCOUNT</a>
             <br><br>
             <a href="https://track.deriv.com/_m3ZAAY7V9rNB4VdSfJsOp2Nd7ZgqdRLk/1/">
                 <img src="https://media.binary.com/uploads/en016-970x90_english.jpeg" style="max-width:100%;height:auto;align-content: center">
@@ -109,9 +183,35 @@
         </div>
         
         <br><br>
-
-       
-    </div>    
+        <div>
+            <h2 style="text-align: center;">DETAILED INFO - STEP BY STEP ON HOW TMNMEDIA SIGNAL WORKS</h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/iJDbc8s4u1A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <br><br>
+      <div>
+        <h2 style="text-align: center;">TRADING SAMPLE WITH SIGNAL ALERT</h2>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/eqV87oVbL1Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+      <br><br>
+      <a href="https://t.me/TMNmediaSignalfree"><img src="https://i0.wp.com/kosherworkingmom.com/wp-content/uploads/2018/05/telegram-icon.png?fit=707%2C217&ssl=1" alt="HTML tutorial" style="width:180px;height:45px; font-weight: bold;"><br>JOIN TMNMEDIA ON TELEGRAM <br></a> 
+      <button onclick='https://t.me/TMNmediaSignalfree' > </button>
+      
+      
+      
+      <br><br>
+      <div style="margin-bottom:0; align-content: center;padding-inline: 10px;">
+        TMNmedia Trading Bot 2024..... STATUS <button id= "checkOnline" value="" style="background-color: #888;"></button>
+        
+    </div><br>
+    
+    
+    <div style="text-align: center; width:100%;align-content: center;">
+        <a href="https://track.deriv.com/_m3ZAAY7V9rNB4VdSfJsOp2Nd7ZgqdRLk/1/">
+            <img src="https://media.binary.com/uploads/en016-970x90_english.jpeg" style="max-width:100%;height:auto;align-content: center">
+        
+        </a>
+    </div>
+    
     
     
     
@@ -192,25 +292,25 @@
     }
 
     if (entrybear === "ENTER"  ) {
-            document.getElementById('entry25').style.backgroundColor = "green";
+            document.getElementById('entry25').style.backgroundColor = "blue"//"green";
             document.getElementById('entry25').style.color = "yellow";
             
         } else {
                 document.getElementById('entry25').style.backgroundColor = "ash";//"green";
-                document.getElementById('entry25').style.color = "black";
+                document.getElementById('entry25').style.color = "blue" //"black";
                            
         }
 
         
 
         if (signalbear === "BELOW BRK LVL"  ) {
-            document.getElementById('signal25').style.backgroundColor = "green";
+            document.getElementById('signal25').style.backgroundColor = "blue"//"green";
             document.getElementById('signal25').style.color = "yellow";
             
             
         } else {
                 document.getElementById('signal25').style.backgroundColor = "ash";//"green";
-                document.getElementById('signal25').style.color = "black";
+                document.getElementById('signal25').style.color = "blue" //"black";
                 
                             
         }
@@ -247,22 +347,22 @@ async function getTMN25() {
 
     if ( signalbear25 === "BELOW BRK LVL" ) {
             
-            document.getElementById('signal').style.backgroundColor = "green";
+            document.getElementById('signal').style.backgroundColor = "blue"//"green";
             document.getElementById('signal').style.color = "yellow";
             
             
         } else {
                 document.getElementById('signal').style.backgroundColor = "ash";//"green";
-                document.getElementById('signal').style.color = "black";
+                document.getElementById('signal').style.color = "blue"//"black";
                             
         }
         
         if ( entrybear25 === "ENTER" ) {
-            document.getElementById('entry').style.backgroundColor = "green";
+            document.getElementById('entry').style.backgroundColor = "blue"//"green";
             document.getElementById('entry').style.color = "yellow";
         } else {
                 document.getElementById('entry').style.backgroundColor = "ash";//"green";
-                document.getElementById('entry').style.color = "black";
+                document.getElementById('entry').style.color = "blue"//"black";
                             
         }
 }
@@ -330,8 +430,7 @@ async function getTMN25() {
             console.log(confirmedlert,'entered Alert Value= ',document.getElementById("priceAlertbear").value)
         }
 
-        //<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    
+
     </script>
-<%- include('layout/footer') %>
- 
+</body>
+</html>
