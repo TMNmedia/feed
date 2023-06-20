@@ -9,7 +9,7 @@ const port = process.env.PORT || 3002;
 const hostname = "0.0.0.0";
 
 
-
+const logrbear = logr():
 //milddlewares
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));//was true before just changed to false
@@ -30,7 +30,7 @@ app.use(express.json());//just added
 app.use(express.static('public'));
 
 app.get('/data', (req, res) => {
-  res.send(JSON.stringify(logr()));
+  res.send(JSON.stringify(logrbear));
 });
 
 app.get('/data25', (req, res) => {
