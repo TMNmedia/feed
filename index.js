@@ -1,6 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser');
-const session = require("express-session");
+//const session = require("express-session");
 const logr = require('./bear')
 const logr25 = require('./vol25')
 const app = express()
@@ -15,17 +15,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));//was true before just changed to false
 app.use(express.json());//just added
 
-app.use(session({
-    secret: "my secret key",
-    saveUninitialized: true,
-    resave: false
-}));
+// app.use(session({
+//     secret: "my secret key",
+//     saveUninitialized: true,
+//     resave: false
+// }));
 
-app.use((req,res,next)=>{
-  res.locals.message = req.session.message;
-  delete req.session.message;
-  next();
-});
+// app.use((req,res,next)=>{
+//   res.locals.message = req.session.message;
+//   delete req.session.message;
+//   next();
+// });
 // Render static files
 app.use(express.static('public'));
 
